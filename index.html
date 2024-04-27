@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo-List</title>
+    <title>To-Do List</title>
+    <style>
+        .container{
+            background-color: #e6e6e6;
+            width: 50%;
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .todo-item{
+            font-size: 30px;
+            margin: 10px;
+            background-color: #99003d;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .container2{
+            display: block;
+            margin: 20px 35%;
+            width: 100%;
+        }
+        .input-type{
+            width: 300px;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .btn{
+            font-size: 24px;
+            padding: 8px;
+            width: 80px;
+            border-radius: 10px;
+            background-color: #99003d;
+            color: #fff;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>To-Do List</h1>
-    
+    <div class="container" id="list">
+        <div class="todo-item">item1</div>
+
+    </div>
+    <div class="container2">
+        <input type="text" id="input-type" class="input-type"/>
+        <button type="button" class="btn" onclick="add()">
+            Add
+        </button>
+    </div>
+
+    <script>
+        const toDoList=[];
+        function add()
+        {
+            let inputElement= document.getElementById('input-type');
+            toDoList.push(inputElement.value);
+            inputElement.value= "";
+
+            render();
+        }
+
+        function render()
+        {
+            const listElement= document.getElementById('list');
+            listElement.innerHTML= "";
+
+            for(const toDoItem of toDoList)
+            {
+                listElement.innerHTML += `<div class="todo-item">${toDoItem}</div>`
+            }
+        }
+    </script>
 </body>
+
 </html>
